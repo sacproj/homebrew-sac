@@ -46,7 +46,7 @@ prepare_release: $(BUILD_PATH) check_version
 	  -e "s|sha256 \".*|sha256 \"$(SAC_TARBALL_SHA256)\"|" \
 	  $(BUILD_SAC_FORMULA) > $(SAC_FORMULA)
 	$(GIT) add $(SAC_FORMULA)
-	$(GIT) commit -s -m "release: $(VERSION)"
+	$(GIT) commit --allow-empty -s -m "release: $(VERSION)"
 	$(GIT) tag -a $(VERSION) -s -m $(VERSION)
 
 ## Publish release (requires defined VERSION)
