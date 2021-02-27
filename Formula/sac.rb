@@ -2,9 +2,9 @@ class Sac < Formula
   desc "Slides as Code"
   homepage "https://github.com/sacproj"
 
-  url "https://github.com/sacproj/sac-cli/releases/download/2.0.3/sac-cli.tar.gz"
-  version "2.0.3"
-  sha256 "d0b0d4564f03063d725ed5459eafa4797f9fbb2c561476b32afa97d6edc26c0d"
+  url "https://github.com/sacproj/sac-cli/releases/download/2.0.4/sac-cli.tar.gz"
+  version "2.0.4"
+  sha256 "36dc6d434b2ee24516274153e54bf21fc42367183c1e8775fec9406554ae780c"
   license "MIT"
 
   def install
