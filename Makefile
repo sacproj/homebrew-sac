@@ -24,7 +24,7 @@ $(BUILD_PATH):
 	$(MKDIR) $@
 
 # Release
-.PHONY: check_version prepare_release publish_release
+.PHONY: check-version prepare-release publish-release
 
 GIT_REMOTE = origin
 SAC_GIT_URL = https://github.com/sacproj/sac-cli
@@ -34,11 +34,11 @@ SAC_TARBALL_URL = $(SAC_GIT_URL)/releases/download/$(VERSION)/$(SAC_TARBALL)
 SAC_TARBALL_SHA256 := $(shell $(CURL) $(SAC_TARBALL_URL) | $(SHA256) - | head -c 64)
 BUILD_SAC_FORMULA := $(BUILD_PATH)/$(shell basename $(SAC_FORMULA))
 
-check_version:
+check-version:
 	@if [ "$(VERSION)" == "" ]; then echo "VERSION must be defined"; exit 1; fi
 
 ## Prepare release (requires defined VERSION)
-prepare_release: $(BUILD_PATH) check_version
+prepare-release: $(BUILD_PATH) check-version
 	$(CP) $(SAC_FORMULA) $(BUILD_SAC_FORMULA)
 	$(SED) \
 	  -e "s|url \".*|url \"$(SAC_TARBALL_URL)\"|" \
@@ -50,7 +50,7 @@ prepare_release: $(BUILD_PATH) check_version
 	$(GIT) tag -a $(VERSION) -s -m $(VERSION)
 
 ## Publish release (requires defined VERSION)
-publish_release: check_version
+publish-release: check-version
 	$(GIT) push
 	$(GIT) push $(GIT_REMOTE) $(VERSION)
 
